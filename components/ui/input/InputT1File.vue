@@ -119,6 +119,7 @@ function updateFile(fileItem) {
     fileClear()
     return
 }
+// image/png
 function isImage(file) {
     return file && file['type'].split('/')[0] === 'image';
 }
