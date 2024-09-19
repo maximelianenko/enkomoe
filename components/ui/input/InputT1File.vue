@@ -23,8 +23,8 @@ component.relative.main-box-shadow.cursor-pointer.flex.flex-col.justify-between.
             type="file"
             @change="updateFileEvent($event)"
         )
-        p.text-black.h-1em.leading-0-9em.font-normal.truncate {{ currentFileName ? currentFileName : props.text }}
-        .min-w-1em.h-1em.w-1em.flex.justify-center.items-center.relative.text-black
+        p.text-black.font-medium.h-1em.leading-0-9em.font-normal.truncate {{ currentFileName ? currentFileName : props.text }}
+        //- .min-w-1em.h-1em.w-1em.flex.justify-center.items-center.relative.text-black
             Icon(v-if="!file" name="mdi:plus-bold")
             Icon(v-else name="mdi:edit")
 
@@ -107,7 +107,7 @@ function fileClear() {
 }
 
 function updateFile(fileItem) {
-    if (props.accept === "*" || Array.isArray(props.accept) && props.accept.includes(fileItem.type)) {
+    if (props.accept === "*" || Array.isArray(props.accept) && props.accept.includes(fileItem?.type)) {
         if (fileSet(fileItem)) {
             errorClear()
             return

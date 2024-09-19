@@ -43,6 +43,8 @@ export default {
             // play: ["Play", "sans-serif"],
             comfortaa: ["Comfortaa", "sans-serif"],
             unbounded: ["Unbounded", "cursive"],
+            rubik: ["Rubik Mono One", "monospace"],
+            nunito: ["Nunito", "system-ui"],
             
             // jetbrains: ["JetBrains Mono", "mono"],
             didact: ["Didact Gothic", "sans-serif"],

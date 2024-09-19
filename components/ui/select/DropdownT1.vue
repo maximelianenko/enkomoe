@@ -8,13 +8,14 @@
                     p {{ index+1 }}
         .relative.top-0.left-0.dropdown-type-1-element
             .absolute.w-full.pt-0-75em
-                .flex.flex-col.bg-amber-300.pr-0-75em.pl-0-5em.pt-0-25em.pb-0-5em.main-box-shadow
-                    //- TransitionGroup(name="fade")
-                    .flex.flex-nowrap.items-center(v-for="(item,index) in slotSelectItems" :key="index")
-                        label.flex.flex-nowrap.items-center.gap-0-25em.cursor-pointer.w-full
-                            input.invisible.absolute.-z-10(type="button" @click="click(index)")
-                            component.select-none.grow(:is="item")
-                            p.leading-none {{ index+1 }}
+                .main-box-shadow
+                    .flex.flex-col.bg-amber-300.pr-1em.pl-0-5em.pt-0-25em.pb-0-5em.overflow-y-auto.main-scrollbar-remove
+                        //- TransitionGroup(name="fade")
+                        .flex.flex-nowrap.items-center(v-for="(item,index) in slotSelectItems" :key="index")
+                            label.flex.flex-nowrap.items-center.gap-0-25em.cursor-pointer.w-full
+                                input.invisible.absolute.-z-10(type="button" @click="click(index)")
+                                component.select-none.grow(:is="item")
+                                p.leading-none {{ index+1 }}
                             //- p {{ currentItem.children[1].children }}
             //- component(:is="slotToggle[0]" @toggle="toggle(key)" :label="false" :disabled="value.disabled" v-model="value.model")
 
@@ -25,7 +26,7 @@ import _ from "lodash"
 const slots = useSlots()
 
 const slotSelect = computed(() => {
-    console.log("slotSelect")
+    // console.log("slotSelect")
     return typeof slots.select === "function" ? slots.select.call() : []
 })
 
@@ -41,7 +42,7 @@ const slotSelectItems = computed(() => {
         }
         items.push(item)
     }
-    console.log(items)
+    // console.log(items)
     // updateKey.value = updateKey.value
     return items
  

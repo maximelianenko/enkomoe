@@ -7,6 +7,7 @@
 </template>
 
 <script setup>
+// бахнуть шоб можно было менять .bg-black динамически
 import _ from "lodash"
 const props = defineProps({
   "src": {

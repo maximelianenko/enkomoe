@@ -58,13 +58,19 @@ class Scrollenko {
         this.hoverElement = elements.hover
         // this.scrollbarElement = elements.scrollbar
     }
-    init(force = false) {
+    init(force = false, maxHeight) {
         this.isNeeded = force || this.baseElement.scrollHeight > this.baseElement.clientHeight
         // console.log(this.isNeeded)
         if (this.isNeeded) {
+            console.log(this.baseElement.scrollHeight)
             this.scrollPositionMax = this.baseElement.scrollHeight - this.baseElement.clientHeight
-            const thumbHeight = Math.max(this.trackElement.clientHeight*(this.trackElement.clientHeight/this.baseElement.scrollHeight),10)
 
+            let thumbHeight
+            if (maxHeight) {
+                thumbHeight = Math.max(this.trackElement.clientHeight*(this.trackElement.clientHeight/maxHeight),10)
+            } else {
+                thumbHeight = Math.max(this.trackElement.clientHeight*(this.trackElement.clientHeight/this.baseElement.scrollHeight),10)
+            }
             if (thumbHeight > this.trackElement.scrollHeight) {
                 this.thumbHeight = this.trackElement.scrollHeight
             } else {

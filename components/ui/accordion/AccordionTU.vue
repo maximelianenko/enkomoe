@@ -76,7 +76,7 @@ watch(slotAccordion,() => {
             if (toggle_value === "false") {
                 toggle = false
             }
-            console.log(item?.props?.toggle)
+            // console.log(item?.props?.toggle)
             slotAccordionItems.value.push({
                 open,
                 toggle,

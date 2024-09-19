@@ -19,16 +19,15 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/tailwindcss',
     "@nuxtjs/google-fonts",
-    [
-      "@pinia/nuxt",
-      {
-        autoImports: ["defineStore", "acceptHMRUpdate"],
-      },
-    ],
+    "@pinia/nuxt",
+    
   ],
-  imports: {
-    dirs: ['store']
+  pinia: {
+    storesDirs: ['./stores/**', './custom-folder/stores/**'],
   },
+  // imports: {
+  //   dirs: ['store']
+  // },
   viewport: {
     breakpoints: {
       xs: 320,
@@ -56,6 +55,8 @@ export default defineNuxtConfig({
     inject: true,
     families: {
       "Raleway": [100,200,300,400,500,600,700,800],
+      "Nunito": [100,200,300,400,500,600,700,800],
+      "Rubik Mono One": [100,200,300,400,500,600,700,800],
       // "Comfortaa": [500],
       "Unbounded": [100,200,300,400,500,600,700,800],
       "Didact+Gothic": [100,200,300,400,500,600,700,800]

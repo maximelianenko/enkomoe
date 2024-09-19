@@ -10,17 +10,17 @@ component(
             ref="thumb"
         )
         .flex.nowrap.absolute.w-full.main-box-shadow
-            .w-0-75em.min-w-0-75em.bg-amber-300
+            //- .w-0-75em.min-w-0-75em.bg-amber-300
             .w-full.h-1-2em.bg-amber-300
-            .w-0-75em.min-w-0-75em.bg-amber-300
-        input.pl-0-25em.pr-0-25em.relative.input-range-type-1.opacity-0(
+            //- .w-0-75em.min-w-0-75em.bg-amber-300
+        input.pl-0-25em.pr-0-3em.h-1-2em.relative.input-range-type-1.opacity-0(
             ref="input"
             type="range"
             :min="props.min"
             :max="props.max"
             :step="props.step"
             :disabled="props.disabled"
-            @input="handleInput($event.target.value)"
+            v-model="model"
         )
 
 </template>
@@ -33,10 +33,11 @@ import anime from "animejs"
 // const throttledUpdateModel = _.throttle((value) => {
 //     model.value = value
 // },60)
-function handleInput(value) {
-    model.value = value
-    // throttledUpdateModel(parseInt(value))
-}
+// function handleInput(value) {
+//     model.value = value
+//     // throttledUpdateModel(parseInt(value))
+// }
+
 const props = defineProps({
     label: {
         default: true,
@@ -60,6 +61,7 @@ const input = ref()
 const main = ref()
 const thumb = ref()
 
+// переделать когда будет нехуй делать
 class Range {
     constructor() {
         this.visible = false
@@ -85,8 +87,8 @@ class Range {
         return this
     }
     updateMinMax(min,max) {
-        this.min = min
-        this.max = max
+        this.min = parseInt(min)
+        this.max = parseInt(max)
         return this
     }
     updatePosition(value) {
@@ -188,8 +190,6 @@ watch(() => range.position, (value) => {
 </script>
 
 <style lang="scss" scoped>
-/********** Range Input Styles **********/
-/*Range Reset*/
 .input-range-type-1 {
    -webkit-appearance: none;
     appearance: none;

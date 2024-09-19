@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.justify-between.flex-nowrap.h-full.relative.touch-none(ref="root")
-    .fixed.w-full.z-50.h-full.top-0.left-0(v-show="scrollenko.touching")
+    .absolute.w-full.z-50.h-full.top-0.left-0(v-show="scrollenko.touching")
     .scrollbar-remove.w-full.h-full(ref="base")
         //- .relative.w-full.scroll-transition.scroll-transition(:style=`{
         //-     top: "-" + scrollenko.scrollPosition + "px"
@@ -26,7 +26,7 @@
             ref="track"
         )   
             .w-full.h-full.bg-gradient-to-b.from-amber-300.to-amber-400.absolute
-        .absolute.w-1-2em.h-full.cursor-pointer.pt-2-2em.pointer-events-none
+        .absolute.w-1-2em.h-full.cursor-grab.pt-2-2em.pointer-events-none
             .relative.flex.justify-center.w-1-2em.pointer-events-auto.overscroll-none(
                 :class=`{"scroll-transition": scrollenko.scrollTransition}`
                 :style=`{
@@ -120,6 +120,7 @@ onMounted(() => {
     if (props.cookie) {
         scrollenko.cookie(scroll_position_cookie.value,scroll_position_max_cookie.value,scrollenko)
     }
+    console.log(scrollenko)
 })
 if (props.cookie) {
     scroll_position_cookie = useCookie("y.scroll." + props.cookie, {default: () => 0})
@@ -134,7 +135,7 @@ if (props.cookie) {
 // })
 watch(() => scrollenko.touching, (touching) => {
     const body = document.querySelector("body")
-    body.setAttribute("style", touching ? "cursor:grab" : 'cursor:auto') 
+    body.setAttribute("style", touching ? "cursor:grabbing" : 'cursor:auto') 
 })
 
 </script>
